@@ -18,6 +18,9 @@ fila.addEventListener("click",function(evento){
     peliculaSeleccionada.genero=evento.target.parentElement.querySelector('h5').textContent //genero
     peliculaSeleccionada.idioma=evento.target.parentElement.querySelector('h6').textContent //idioma
     peliculaSeleccionada.sinopsis=evento.target.parentElement.querySelector('p').textContent //sinopsis
+    peliculaSeleccionada.director=evento.target.parentElement.querySelector('.text-muted').textContent //sinopsis
+
+
 
     console.log(peliculaSeleccionada)
 

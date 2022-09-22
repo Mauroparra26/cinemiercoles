@@ -38,6 +38,11 @@ export function pintarPeliculas(peliculas){
         let sinopsis=document.createElement("p")
         sinopsis.classList.add("d-none")
         sinopsis.textContent=pelicula.sinopsis
+
+        //7. Creamos el director
+        let director=document.createElement("p")
+        director.classList.add("text-muted")
+        director.textContent=pelicula.director
         
     
         //Padres e Hijos
@@ -45,6 +50,7 @@ export function pintarPeliculas(peliculas){
         tarjeta.appendChild(nombre)
         tarjeta.appendChild(genero)
         tarjeta.appendChild(idioma)
+        tarjeta.appendChild(director)
         tarjeta.appendChild(sinopsis)
     
         columna.appendChild(tarjeta)
