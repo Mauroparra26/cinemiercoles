@@ -1,3 +1,5 @@
+import { pintarSillas } from "../helper/pintarSillas.js"
+
 let asientos=[
     [{id:"a1",estado:2},{id:"b1",estado:2},{id:"c1",estado:0},{id:"d1",estado:0}],
     [{id:"a2",estado:0},{id:"b2",estado:0},{id:"c2",estado:0},{id:"d2",estado:0}],
@@ -8,30 +10,31 @@ let asientos=[
 let cinema=document.getElementById("salacinema")
 
 //Recorrer los asientos y aplicar traversing
-asientos.forEach(function(hilera){
+pintarSillas(asientos, cinema)
 
-    let fila=document.createElement("div")
-    fila.classList.add("row")
+//Evento de clic en la sala de cine
+cinema.addEventListener("click",function(evento){
+    if(evento.target.tagName=="IMG"){
+        let idAsientoSeleccionado=evento.target.id
 
-    hilera.forEach(function(asiento){
-        
-        let columna= document.createElement("div")
-        columna.classList.add("col-3")
+        asientos.forEach(function(hilera){
+            hilera.forEach(function(asiento){
+                if(asiento.id==idAsientoSeleccionado){
 
-        let fotoSilla=document.createElement("img")
-        fotoSilla.classList.add("img-fluid","w-100")
-        fotoSilla.setAttribute("id",asiento.id)
+                    //encontre el asiento donde el usuario se quiere sentar
+                    if(asiento.estado==0){
+                        asiento.estado=1
+                        evento.target.src="../../assets/img/cinema-chair (2).png"
+                    }else if(asiento.estado==1){
+                        asiento.estado=0
+                        evento.target.src="../../assets/img/cinema-chair.png"
+                    }
 
-        if(asiento.estado==0){
-            fotoSilla.src="../../assets/img/cinema-chair.png"
-        }else if(asiento.estado==2){
-            fotoSilla.src="../../assets/img/cinema-red.png"
-        }
+                }
+            })
+        })
 
-        //padres e hijos
-        columna.appendChild(fotoSilla)
-        fila.appendChild(columna)
 
-    })
-    cinema.appendChild(fila)
+
+    }
 })
