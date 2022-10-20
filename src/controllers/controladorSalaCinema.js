@@ -38,3 +38,8 @@ cinema.addEventListener("click",function(evento){
 
     }
 })
+
+function calcularTotal() {
+    const suma=[...document.querySelectorAll("salacinema")].reduce((acum, el) => acum+parseFloat(el.innerText), 0);
+    document.querySelector("").innerText=suma.toFixed(2);
+}
